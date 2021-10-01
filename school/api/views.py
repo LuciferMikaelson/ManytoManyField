@@ -5,18 +5,18 @@ from .serializer import StudentsSerializer, ModulesSerializer
 
 
 class StudentsViewSet(viewsets.ModelViewSet):
-    queryset = Students.objects.all()
+    queryset = Students.objects.filter(name=name)
     serializer_class = StudentsSerializer
 
 
-    # def create(self, validated_data):
-    #     modules_data = validated_data.pop('modules')
-    #     student = Students.objects.create(**validated_data)
+#     def create(self, validated_data):
+#         modules_data = validated_data.pop('modules')
+#         student = Students.objects.create(**validated_data)
         
-    #     # import pdb; pdb.set_trace()
-    #     for module_data in modules_data:
-    #         Modules.objects.create(student = student, module = module_data)
-    #     return student
+#         # import pdb; pdb.set_trace()
+#         for module_data in modules_data:
+#             Modules.objects.create(student = student, module = module_data)
+#         return student
 
     def create(self, request, *args, **kwargs):
         new_student = StudentsSerializer(data=request.data)
