@@ -45,7 +45,9 @@ class StudentsViewSet(viewsets.ModelViewSet):
 
     #     return Response(serializer.data)
 
-
+    def add(req,res):
+        req.accept()
+    
 class ModulesViewSet(viewsets.ModelViewSet):
     queryset = Modules.objects.all()
     serializer_class = ModulesSerializer
